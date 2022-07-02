@@ -12,11 +12,7 @@ type Props = {
 };
 
 const ButtonGroup = ({ children }: Props) => {
-  return (
-    <StyledButtons>
-      {children}
-    </StyledButtons>
-  );
+  return <StyledButtons>{children}</StyledButtons>;
 };
 
 export default ButtonGroup;
