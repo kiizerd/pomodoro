@@ -28,7 +28,7 @@ const Controls = ({ isActive, controlMethods }: ControlsProps) => {
   return (
     <ButtonGroup>
       {!isActive ? startBtn : stopBtn}
-      <Button onClick={reset} color="#FFEB3B" borderColor="#FF5722">
+      <Button onClick={reset} color="#FFC107" borderColor="#FFA000">
         Reset
       </Button>
     </ButtonGroup>
