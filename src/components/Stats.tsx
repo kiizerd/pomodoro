@@ -17,10 +17,6 @@ const StyledStats = styled.article`
   background: #a6b6b6;
   border-radius: 5px;
   border-right: 6px solid #657575;
-  transition: transform 0.2s ease-in-out;
-  :hover {
-    transform: scale(1.05);
-  }
 `;
 
 const StatHeader = styled.div<StatStyleProps>`
