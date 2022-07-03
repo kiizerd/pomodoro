@@ -6,17 +6,12 @@ import Timer from "./components/Timer";
 import Stats from "./components/Stats";
 
 const StyledApp = styled.main`
+  padding: 12px;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
 `;
-
-interface CompletedTimers {
-  work: number;
-  longBreak: number;
-  shortBreak: number;
-}
 
 const App = () => {
   const [timer, setTimer] = useState(0);
@@ -41,6 +36,20 @@ const App = () => {
     resetTimer();
   };
 
+  const incrementCompletions = (timerLength: number) => {
+    if (timerLength === 25 * 60) {
+      setCompletions({ ...completions, work: completions.work + 1 });
+    } else if (timerLength === 5 * 60) {
+      // May be better way to alter state, this is the first to work well
+      setCompletions({
+        ...completions,
+        shortBreak: completions.shortBreak + 1,
+      });
+    } else if (timerLength === 15 * 60) {
+      setCompletions({ ...completions, longBreak: completions.longBreak + 1 });
+    }
+  };
+
   // Create an interval and tick it every second
   // If the timer state is active, increment the timer.
   useEffect(() => {
@@ -57,15 +66,9 @@ const App = () => {
 
   // Stop timer once it equals timeLength to prevent it going negative
   useEffect(() => {
-    if (timer === timerLength) {
+    if (timer >= timerLength) {
       resetTimer();
-      if (timerLength === 25 * 60) {
-        const newCompletions = Object.assign(
-          { work: completions.work + 1 },
-          completions
-        );
-        setCompletions(newCompletions);
-      }
+      incrementCompletions(timerLength);
     }
   }, [timer]);
 
@@ -80,7 +83,7 @@ const App = () => {
       <Selector selectTimer={changeTimerLength} />
       <Timer time={timerLength - timer} length={timerLength} />
       <Controls isActive={isActive} controlMethods={timerControls} />
-      <Stats workCompleted={completions.work} />
+      <Stats completions={completions} />
     </StyledApp>
   );
 };
