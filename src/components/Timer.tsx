@@ -12,9 +12,9 @@ interface TimerSectionProps {
 
 const TimerSection = styled.section<TimerSectionProps>`
   color: #fff;
-  margin: 10px;
+  margin: 14px auto;
   font-size: 34px;
-  padding: 60px 40px;
+  padding: 6rem 5rem;
   text-align: center;
   border-radius: 50%;
   background-color: #f44336;
