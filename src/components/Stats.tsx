@@ -13,17 +13,21 @@ interface StatStyleProps {
 const StyledStats = styled.article`
   display: flex;
   flex-direction: column;
+  position: relative;
   background: #a6b6b6;
   border-radius: 5px;
   border-right: 6px solid #657575;
-  position: relative;
+  transition: transform 0.2s ease-in-out;
+  :hover {
+    transform: scale(1.05);
+  }
 `;
 
 const StatHeader = styled.div<StatStyleProps>`
-  text-decoration: underline;
-  padding: 6px 12px;
-  font-size: 18px;
   display: flex;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 6px 12px;
   align-items: center;
 
   svg {
@@ -40,10 +44,10 @@ const StatHeader = styled.div<StatStyleProps>`
 
 const StatSectionList = styled.ul<StatStyleProps>`
   margin: 0;
-  padding: 0;
-  left: 16px;
   top: 100%;
-  width: 80%;
+  left: 16px;
+  width: 85%;
+  padding: 0;
   position: absolute;
   transition: transform 0.3s ease-in-out;
   transform: scaleY(${(p) => (p.isHidden ? "0" : "1.0")});
@@ -55,8 +59,9 @@ const StatSectionList = styled.ul<StatStyleProps>`
 
 const StatSection = styled.section`
   display: flex;
-  padding: 4px 12px 10px;
-  font-size: 14px;
+  padding: 10px 12px 10px;
+  justify-content: space-around;
+  border-bottom: 2px solid #657575;
   // Space from the right side of the number
   > div {
     &:first-child {
@@ -65,7 +70,8 @@ const StatSection = styled.section`
   }
   // Space from the bottom of last section
   &:last-child {
-    margin-bottom: 6px;
+    margin-bottom: 2px;
+    border: none;
   }
 `;
 
@@ -75,9 +81,9 @@ const Stats = ({ completions }: StatsProps) => {
 
   return (
     <StyledStats>
-      <StatHeader isHidden={hidden}>
+      <StatHeader onClick={toggleHidden} isHidden={hidden}>
         Completed Timers
-        <BsChevronDown onClick={toggleHidden} />
+        <BsChevronDown />
       </StatHeader>
       <StatSectionList isHidden={hidden}>
         <StatSection>
