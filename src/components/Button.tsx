@@ -11,15 +11,15 @@ interface ButtonProps {
 const StyledButton = styled.button<
   Pick<ButtonProps, "color" | "textColor" | "borderColor">
 >`
-  background: ${(p) => (p.color ? p.color : "#8BC34A")};
+  background: ${(p) => (p.color ? p.color : "#4CAF50")};
   margin-right: 12px;
-  padding: 9px 8px 9px 12px;
+  padding: 9px 22px 9px 26px;
   border-radius: 3px;
   border: none;
   border-right: 4px solid ${(p) => (p.borderColor ? p.borderColor : "#388E3C")};
   font-size: 18px;
-  transition: all 0.3s linear;
-  color: ${(p) => (p.textColor ? p.textColor : "#212121")};
+  transition: all 0.3s ease-in-out;
+  color: ${(p) => (p.textColor ? p.textColor : "#0C0C0C")};
   :hover {
     filter: brightness(115%);
     transform: scale(1.1);
