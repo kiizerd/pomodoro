@@ -3,7 +3,8 @@
 A Pomodoro timer made with Typescript, React and styled-components.  
 Bootstrapped with `create-react-app`.
 
-The main purpose of this project was to have something simple to build to teach myself Typescript.  I'd say in that regard it went decently well, I got a good handle of the syntax and the basic typing system. The intellisence provided by VSCode definitely helped prevent some would-be errors.  
+The main purpose of this project was to have something simple to build to teach myself Typescript.  
+In that regard it went decently well, I got a good handle of the syntax and the basic typing system. The intellisence provided by VSCode definitely helped prevent some would-be errors.  
 
 My biggest challenge in this project was getting a timer to tick every second within React.  
 The solution was the `useEffect` hook and the JS `setInterval` method.
